@@ -1,10 +1,36 @@
+
 <!-- home.html -->
-<link rel="stylesheet" type="text/css" href="{% static 'autocar/css/style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'autocar/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <!-- Your header content goes here -->
+    </header>
 
+    <main>
+        <section id="featured-cars">
+            <h2>Featured Cars</h2>
+            <div class="featured-cars-list">
+                {% for car in featured_cars %}
+                <div class="featured-car">
+                    <h3>{{ car.make }} {{ car.model }}</h3>
+                    <p>Year: {{ car.year }}</p>
+                    <p>Price: ${{ car.price }}</p>
+                    <!-- Add more details if needed -->
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
 
-{% block content %}
-<section id="featured-cars">
-    <h2>Featured Cars</h2>
-    <!-- Showcase featured cars here -->
-</section>
-{% endblock %}
+    <footer>
+        <!-- Your footer content goes here -->
+    </footer>
+</body>
+</html>
