@@ -1,8 +1,51 @@
 <!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Car Dealership</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'autocar/css/style.css' %}">
+</head>
+<body>
 
-{% block content %}
-<section id="featured-cars">
-    <h2>Featured Cars</h2>
-    <!-- Showcase featured cars here -->
-</section>
-{% endblock %}
+<header>
+    <h1>Welcome to My Car Dealership</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Cars</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="featured-cars">
+        <h2>Featured Cars</h2>
+        <div class="car-listings">
+            <div class="car">
+                <img src="{% static 'autocar/images/car1.jpg' %}" alt="Car 1">
+                <h3>Car Model 1</h3>
+                <p>Description of Car Model 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Price: $XX,XXX</p>
+                <a href="#" class="button">View Details</a>
+            </div>
+            <div class="car">
+                <img src="{% static 'autocar/images/car2.jpg' %}" alt="Car 2">
+                <h3>Car Model 2</h3>
+                <p>Description of Car Model 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Price: $XX,XXX</p>
+                <a href="#" class="button">View Details</a>
+            </div>
+            <!-- Add more car listings as needed -->
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 My Car Dealership. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
