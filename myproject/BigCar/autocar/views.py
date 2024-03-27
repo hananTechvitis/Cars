@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import Car
+from django.http import HttpResponse
 
-# Create your views here.
+def hello(request):
+    return HttpResponse("Hello, world! This is my first Django view.")
