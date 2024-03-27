@@ -1,6 +1,5 @@
 {% load static %}
 
-<!-- home.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,31 +7,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Car Dealership</title>
     <link rel="stylesheet" type="text/css" href="{% static 'autocar/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-    <h1>Welcome to My Car Dealership</h1>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Cars</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+<header class="header">
+    <div class="container">
+        <h1 class="logo">My Car Dealership</h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Cars</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
-<main>
-    <section id="featured-cars">
-        <h2>Featured Cars</h2>
-        <div class="car-listings">
-            <!-- Your car listings here -->
+<main class="main">
+    <section class="hero">
+        <div class="container">
+            <h2>Find Your Dream Car</h2>
+            <p>Explore our wide selection of high-quality cars</p>
+            <a href="#" class="btn btn-primary">View Cars</a>
+        </div>
+    </section>
+
+    <section class="featured-cars">
+        <div class="container">
+            <h2>Featured Cars</h2>
+            <div class="car-listings">
+                <!-- Your car listings here -->
+            </div>
         </div>
     </section>
 </main>
 
-<footer>
-    <p>&copy; 2024 My Car Dealership. All rights reserved.</p>
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 My Car Dealership. All rights reserved.</p>
+    </div>
 </footer>
 
 </body>
