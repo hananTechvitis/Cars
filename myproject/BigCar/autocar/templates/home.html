@@ -1,42 +1,10 @@
-{% load static %}  <!-- Add this line at the top to load the static template tag library -->
-
 <!-- home.html -->
 <link rel="stylesheet" type="text/css" href="{% static 'autocar/css/style.css' %}">
+
 
 {% block content %}
 <section id="featured-cars">
     <h2>Featured Cars</h2>
     <!-- Showcase featured cars here -->
-    <div class="car-list">
-        <!-- Example of a featured car -->
-        <div class="car">
-            <img src="{% static 'autocar/images/car1.jpg' %}" alt="Car Image">
-            <h3>Car Name</h3>
-            <p>Description of the car goes here.</p>
-            <p>Price: $XXXXX</p>
-            <a href="#" class="button">View Details</a>
-        </div>
-
-        <!-- Add more featured cars as needed -->
-        <!-- Example of another featured car -->
-        <div class="car">
-            <img src="{% static 'autocar/images/car2.jpg' %}" alt="Car Image">
-            <h3>Another Car Name</h3>
-            <p>Description of another car goes here.</p>
-            <p>Price: $XXXXX</p>
-            <a href="#" class="button">View Details</a>
-        </div>
-    </div>
-</section>
-
-<!-- Additional sections or content can be added here -->
-<section id="about-us">
-    <h2>About Us</h2>
-    <p>Information about your car dealership or company can go here.</p>
-</section>
-
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Contact information and a contact form can go here.</p>
 </section>
 {% endblock %}
