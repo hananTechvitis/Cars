@@ -11,4 +11,4 @@ class Car(models.Model):
     image = models.ImageField(upload_to='car_images')
 
 def __str__(self):
-        return f"{self.brand.name} {self.model} ({self.year})"
+        return self.title
