@@ -1,21 +1,53 @@
-{% load static %}
-
-<!-- home.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="" type="image/x-icon">
+
+    <!--=============== REMIX ICONS ===============-->
+
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="">
+
+    <!--=============== CSS ===============-->
     <link rel="stylesheet" type="text/css" href="{% static 'autocar/css/style.css' %}">
+
+    <title>Responsive car website - Bedimcode</title>
 </head>
 <body>
-    <header>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
         <!-- Your header content goes here -->
     </header>
 
-    <main>
-        <section id="featured-cars">
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home">
+            
+        </section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
+            
+        </section>
+
+        <!--==================== POPULAR ====================-->
+        <section class="popular section" id="popular">
+            
+        </section>
+
+        <!--==================== FEATURES ====================-->
+        <section class="features section">
+            
+        </section>
+
+        <!--==================== FEATURED ====================-->
+        <section class="featured section" id="featured">
             <h2>Featured Cars</h2>
             <div class="featured-cars-list">
                 {% for car in featured_cars %}
@@ -28,10 +60,37 @@
                 {% endfor %}
             </div>
         </section>
+
+        <!--==================== OFFER ====================-->
+        <section class="offer section">
+            
+        </section>
+
+        <!--==================== LOGOS ====================-->
+        <section class="logos section">
+            
+        </section>
     </main>
 
-    <footer>
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
         <!-- Your footer content goes here -->
     </footer>
+
+
+    <!--========== SCROLL UP ==========-->
+
+
+    <!--=============== SCROLL REVEAL ===============-->
+    <script src=""></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src=""></script>
+
+    <!--=============== MIXITUP JS ===============-->
+    <script src=""></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src=""></script>
 </body>
 </html>
