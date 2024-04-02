@@ -177,7 +177,13 @@
                 <figure class="card-banner">  
                   <!-- <img src="{% static 'car-1.jpg' %}" alt="{{ car.brand }} {{ car.model }} {{ car.year }}" loading="lazy" width="440" height="300"
                     class="w-100"> -->
-                  <img src="{{ car.image.url }}" alt="{{ car.brand }} {{ car.model }} {{ car.year }}" loading="lazy" width="440" height="300" class="w-100">
+                    {% if car.image %}
+                    <!-- Display the car image if it exists -->
+                    <img src="{{ car.image.url }}" alt="{{ car.brand }} {{ car.model }} {{ car.year }}" loading="lazy" width="440" height="300" class="w-100">
+                    {% else %}
+                    <!-- Display a placeholder or leave it blank if no image exists -->
+                    <img src="{% static 'car-1.jpg' %}" alt="No image available" loading="lazy" width="440" height="300" class="w-100">
+                    {% endif %}
 
                   
                 </figure>
