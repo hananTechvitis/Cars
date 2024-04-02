@@ -14,14 +14,14 @@ class Car(models.Model):
     image = models.ImageField(upload_to='car_images')
 
     # New fields
-    passengers = models.IntegerField(verbose_name='Number of Passengers')
+    passengers = models.IntegerField(verbose_name='Number of Passengers', default=4)
     TYPE_CHOICES = (
         ('Hybrid', 'Hybrid'),
         ('Gasoline', 'Gasoline'),
     )
     type = models.CharField(max_length=8, choices=TYPE_CHOICES, default='Gasoline', verbose_name='Car Type')
     is_automatic = models.BooleanField(default=True, verbose_name='Is Automatic')
-    fuel_efficiency = models.CharField(max_length=15, verbose_name='Fuel Efficiency (km/litre)')
+    fuel_efficiency = models.CharField(max_length=15, verbose_name='Fuel Efficiency (km/litre)', default='N/A')
     
     def __str__(self):
         return f"{self.brand} {self.model} ({self.year})"
