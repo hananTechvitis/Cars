@@ -21,7 +21,8 @@ def rent_car(request, car_id):
     # Add your logic here (e.g., create a rental record, mark the car as unavailable)
     
     # Optionally, add a message to display to the user
-    messages.success(request, "Your rental request has been submitted.")
+    messages.success(request, "Your rental request has been submitted.") 
+    messages.success(request, "Your rental request for the car has been submitted successfully!")
     
     # Redirect to a new URL:
     return redirect('home')  # Redirect to the homepage or another appropriate page
