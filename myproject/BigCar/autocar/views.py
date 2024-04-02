@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Car
 from django.contrib import messages
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import redirect
 
 def hello(request):
     return HttpResponse("Hello, world! This is my first Django view.")
@@ -15,17 +15,9 @@ def home(request):
    
 
 def rent_car(request, car_id):
-    car = get_object_or_404(Car, id=car_id)
-    # Example action: print a message to the console (replace with your action)
-    print(f"The car {car} has been requested for rent.")
-    # Add your logic here (e.g., create a rental record, mark the car as unavailable)
-    
-    # Optionally, add a message to display to the user
-    messages.success(request, "Your rental request has been submitted.") 
-    messages.success(request, "Your rental request for the car has been submitted successfully!")
-    
-    # Redirect to a new URL:
-    return redirect('home')  # Redirect to the homepage or another appropriate page
+    # Your logic here
+    messages.success(request, 'Car rental request submitted successfully!')
+    return redirect('home')  # Assuming you're redirecting to a page named 'home'
 
 
 

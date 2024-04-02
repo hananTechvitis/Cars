@@ -158,6 +158,14 @@
 
       <section class="section featured-car" id="featured-car">
         <div class="container">
+          <!-- Messages block inserted here -->
+        {% if messages %}
+          {% for message in messages %}
+          <div class="{{ message.tags }}">
+              {{ message }}
+          </div>
+          {% endfor %}
+        {% endif %}
 
           <div class="title-wrapper">
             <h2 class="h2 section-title">Featured cars</h2>
@@ -244,16 +252,7 @@
               </div>
             </li>
             {% endfor %}
-            {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                {% endfor %}
+            
             </div>
             {% endif %}
             
@@ -347,237 +346,8 @@
         </div>
       </section>
 
-
-
-
-
-      <!-- 
-        - #BLOG
-      
-
-      <section class="section blog" id="blog">
-        <div class="container">
-
-          <h2 class="h2 section-title">Our Blog</h2>
-
-          <ul class="blog-list has-scrollbar">
-
-            <li>
-              <div class="blog-card">
-
-                <figure class="card-banner">
-
-                  <a href="#">
-                      <img src="{% static 'blog-1.jpg' %}" alt="Opening of new offices of the company" loading="lazy"
-                      class="w-100">
-                  </a>
-
-                  <a href="#" class="btn card-badge">Company</a>
-
-                </figure>
-
-                <div class="card-content">
-
-                  <h3 class="h3 card-title">
-                    <a href="#">Opening of new offices of the company</a>
-                  </h3>
-
-                  <div class="card-meta">
-
-                    <div class="publish-date">
-                      <ion-icon name="time-outline"></ion-icon>
-
-                      <time datetime="2022-01-14">January 14, 2022</time>
-                    </div>
-
-                    <div class="comments">
-                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-
-                      <data value="114">114</data>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="blog-card">
-
-                <figure class="card-banner">
-
-                  <a href="#">
-                      <img src="{% static 'blog-2.jpg' %}" alt="What cars are most vulnerable" loading="lazy"
-                      class="w-100">
-                  </a>
-
-                  <a href="#" class="btn card-badge">Repair</a>
-
-                </figure>
-
-                <div class="card-content">
-
-                  <h3 class="h3 card-title">
-                    <a href="#">What cars are most vulnerable</a>
-                  </h3>
-
-                  <div class="card-meta">
-
-                    <div class="publish-date">
-                      <ion-icon name="time-outline"></ion-icon>
-
-                      <time datetime="2022-01-14">January 14, 2022</time>
-                    </div>
-
-                    <div class="comments">
-                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-
-                      <data value="114">114</data>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="blog-card">
-
-                <figure class="card-banner">
-
-                  <a href="#">
-
-                    <img src="{% static 'blog-3.jpg' %}" alt="Statistics showed which average age" loading="lazy"
-                      class="w-100">
-                  </a>
-
-                  <a href="#" class="btn card-badge">Cars</a>
-
-                </figure>
-
-                <div class="card-content">
-
-                  <h3 class="h3 card-title">
-                    <a href="#">Statistics showed which average age</a>
-                  </h3>
-
-                  <div class="card-meta">
-
-                    <div class="publish-date">
-                      <ion-icon name="time-outline"></ion-icon>
-
-                      <time datetime="2022-01-14">January 14, 2022</time>
-                    </div>
-
-                    <div class="comments">
-                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-
-                      <data value="114">114</data>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="blog-card">
-
-                <figure class="card-banner">
-
-                  <a href="#">
-                    <img src="{% static 'blog-4.jpg' %}" alt="What´s required when renting a car?" loading="lazy"
-                    class="w-100">
-                  </a>
-
-                  <a href="#" class="btn card-badge">Cars</a>
-
-                </figure>
-
-                <div class="card-content">
-
-                  <h3 class="h3 card-title">
-                    <a href="#">What´s required when renting a car?</a>
-                  </h3>
-
-                  <div class="card-meta">
-
-                    <div class="publish-date">
-                      <ion-icon name="time-outline"></ion-icon>
-
-                      <time datetime="2022-01-14">January 14, 2022</time>
-                    </div>
-
-                    <div class="comments">
-                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-
-                      <data value="114">114</data>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="blog-card">
-
-                <figure class="card-banner">
-
-                  <a href="#">
-
-                    <img src="{% static 'blog-5.jpg' %}" alt="New rules for handling our cars" loading="lazy" class="w-100">
-                  </a>
-
-                  <a href="#" class="btn card-badge">Company</a>
-
-                </figure>
-
-                <div class="card-content">
-
-                  <h3 class="h3 card-title">
-                    <a href="#">New rules for handling our cars</a>
-                  </h3>
-
-                  <div class="card-meta">
-
-                    <div class="publish-date">
-                      <ion-icon name="time-outline"></ion-icon>
-
-                      <time datetime="2022-01-14">January 14, 2022</time>
-                    </div>
-
-                    <div class="comments">
-                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-
-                      <data value="114">114</data>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
--->
     </article>
   </main>
-
-
-
 
 
   <!-- 
@@ -648,49 +418,7 @@
           </li>
 
         </ul>
-<!-- 
-    - #FOOTER
-  
-        <ul class="footer-list">
 
-          <li>
-            <p class="footer-list-title">Neighborhoods in Beirut</p>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Manhattan</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Central New York City</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Upper East Side</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Queens</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Theater District</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Midtown</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">SoHo</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Chelsea</a>
-          </li>
-
-        </ul>
--->
       </div>
 
       <div class="footer-bottom">
