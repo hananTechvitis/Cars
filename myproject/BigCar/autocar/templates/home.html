@@ -112,7 +112,7 @@
             <h2 class="h1 hero-title">The easy way to takeover a lease</h2>
 
             <p class="hero-text">
-              Live in LebanonConnecticut!
+              Live in Lebanon Connecticut!
             </p>
           </div>
 
@@ -167,15 +167,15 @@
 
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </a>
-          </div>
+          </div>  
 
           <ul class="featured-car-list">
-
+            {% for car in featured_cars %}
             <li>
               <div class="featured-car-card">
 
                 <figure class="card-banner">  
-                  <img src="{% static 'car-1.jpg' %}" alt="Toyota RAV4 2021" loading="lazy" width="440" height="300"
+                  <img src="{% static 'car-1.jpg' %}" alt="{{ car.brand }} {{ car.model }} {{ car.year }}" loading="lazy" width="440" height="300"
                     class="w-100">
                 </figure>
 
@@ -183,10 +183,10 @@
 
                   <div class="card-title-wrapper">
                     <h3 class="h3 card-title">
-                      <a href="#">Toyota RAV4</a>
+                      <a href="#">{{ car.brand }} {{ car.model }}</a>
                     </h3>
 
-                    <data class="year" value="2021">2021</data>
+                    <data class="year" value="{{ car.year }}">{{ car.year }}</data>
                   </div>
 
                   <ul class="card-list">
@@ -220,7 +220,7 @@
                   <div class="card-price-wrapper">
 
                     <p class="card-price">
-                      <strong>$440</strong> / month
+                      <strong>${{ car.price }}</strong> / month
                     </p>
 
                     <button class="btn fav-btn" aria-label="Add to favourite list">
@@ -235,7 +235,7 @@
 
               </div>
             </li>
-
+            {% endfor %}
             <li>
               <div class="featured-car-card">
 
@@ -1043,7 +1043,7 @@
         </ul>
 
         <p class="copyright">
-          &copy; 2022 <a href="#">codewithsadee</a>. All Rights Reserved
+          &copy; 2024 All Rights Reserved
         </p>
 
       </div>
