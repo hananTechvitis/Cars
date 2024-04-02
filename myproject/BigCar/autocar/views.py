@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Car
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 
 def hello(request):
     return HttpResponse("Hello, world! This is my first Django view.")
@@ -15,9 +15,10 @@ def home(request):
    
 
 def rent_car(request, car_id):
-    # Your logic here
-    messages.success(request, 'Car rental request submitted successfully!')
-    return redirect('home')  # Assuming you're redirecting to a page named 'home'
+    car = get_object_or_404(Car, id=car_id)
+    # Here, you would implement the rental logic, such as marking the car as rented
+    messages.success(request, "Car rental request submitted successfully!")
+    return redirect('home')
 
 
 
