@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Car
-from django.contrib import messages
-from django.shortcuts import get_object_or_404, redirect
-from django.http import JsonResponse
-from django.views.decorators.http import require_POST
+from django.shortcuts import redirect
+from django.contrib import message
 
 
 def hello(request):
@@ -17,21 +15,17 @@ def home(request):
     return render(request, 'home.html', {'featured_cars': featured_cars})
    
 
-@require_POST
+
 def rent_car(request, car_id):
-    if request.is_ajax():
-        car = get_object_or_404(Car, id=car_id)
-        # Add your rental logic here
+    # Logic to rent the car
+    # For example, update the database to mark the car as rented
+    # ...
 
-        # Example: Add a success message
-        message = "Car rental request submitted successfully for {}!".format(car.model)
-        
-        # Instead of adding a message to Django's messages framework, 
-        # return a JSON response with the message
-        return JsonResponse({'message': message}, status=200)
-    else:
-        return JsonResponse({'error': 'Invalid request'}, status=400)
+    # Add a success message
+    messages.success(request, "Car rented successfully!")
 
+    # Redirect back to the same page or to a different page
+    return redirect('some-page-name')
 
 
 

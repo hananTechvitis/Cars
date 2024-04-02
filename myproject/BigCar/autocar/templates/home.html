@@ -243,52 +243,16 @@
                     <button class="btn fav-btn" aria-label="Add to favourite list">
                       <ion-icon name="heart-outline"></ion-icon>
                     </button>
+                    <a href="{% url 'rent-car' car.id %}" class="btn">Rent now</a>
 
-                    <!-- <button class="btn" onclick="location.href='{% url 'rent-car' car.id %}'">Rent now</button> -->
-                    <button class="btn" data-car-id="{{ car.id }}">Rent now</button>
-
-<!-- Somewhere in your template, for displaying the message -->
-<div id="message-container"></div>
-
-<script>
-// Function to get CSRF token
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
-document.querySelectorAll('.btn').forEach(item => {
-    item.addEventListener('click', function(e) {
-        const carId = this.getAttribute('data-car-id');
-        const csrftoken = getCookie('csrftoken');
-
-        fetch(`/rent-car/${carId}/`, {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': csrftoken,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ 'car_id': carId })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Display the message in the message container
-            document.getElementById('message-container').innerText = data.message || 'An error occurred';
-        })
-        .catch(error => console.error('Error:', error));
-    });
-});
-</script>
+                    <!-- <button class="btn" onclick="location.href='{% url 'rent-car' car.id %}'">Rent now</button>  -->
+                    {% if messages %}
+  {% for message in messages %}
+  <div class="alert {{ message.tags }}">
+      {{ message }}
+  </div>
+  {% endfor %}
+{% endif %}
 
                   </form>
                   
