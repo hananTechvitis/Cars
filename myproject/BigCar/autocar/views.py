@@ -17,11 +17,6 @@ def home(request):
 
 
 def rent_car(request, car_id):
-    # Logic to rent the car
-    # For example, update the database to mark the car as rented
-    # ...
-
-    # Add a success message
     messages.success(request, "Car rented successfully!")
 
     # Redirect back to the same page or to a different page
