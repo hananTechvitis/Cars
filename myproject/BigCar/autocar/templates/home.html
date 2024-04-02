@@ -26,42 +26,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
     rel="stylesheet">
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
-<script type="text/template" id="messages-template">
-  {% if messages %}
-    var messageText = "";
-    {% for message in messages %}
-        messageText += "{{ message }}<br>";
-    {% endfor %}
-  {% endif %}
-</script>
 
-  
 <body>
-
-  <!-- Message Modal -->
-<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="messageModalLabel">Message</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Messages will be inserted here -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
   <!-- 
     - #HEADER
@@ -275,11 +244,11 @@
                     <button class="btn fav-btn" aria-label="Add to favourite list">
                       <ion-icon name="heart-outline"></ion-icon>
                     </button>
-                    <a href="{% url 'rent-car' car.id %}" class="btn">Rent now</a>
 
                     <!-- <button class="btn" onclick="location.href='{% url 'rent-car' car.id %}'">Rent now</button> -->
-
-
+                    <form action="{% url 'rent-car' car.id %}" method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="btn">Rent now</button>
                   </form>
                   
                   </div>
@@ -295,6 +264,9 @@
             
         </div>
       </section>
+
+
+
 
 
       <!-- 
@@ -505,7 +477,35 @@
 
     </div>
   </footer>
-
+  <!-- Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Message</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+          </div>
+          <div class="modal-body">
+              <!-- Message will be inserted here -->
+          </div>
+      </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+      {% if message %}
+          var messageText = "";
+          {% for messages in messages %}
+              messageText += "{{ message }}\n";
+          {% endfor %}
+          $('.modal-body').text(messageText);
+          $('#messageModal').modal('show');
+      {% endif %}
+  });
+  </script>
+  
 
 
 
@@ -520,7 +520,8 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
