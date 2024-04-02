@@ -25,7 +25,7 @@ def rent_car(request, car_id):
     messages.success(request, "Car rented successfully!")
 
     # Redirect back to the same page or to a different page
-    return redirect('some-page-name')
+    return redirect('home')
 
 
 
