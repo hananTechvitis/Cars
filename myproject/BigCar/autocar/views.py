@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Car
 from django.shortcuts import redirect
-from django.contrib import message
+from django.contrib import messages
 
 
 def hello(request):
