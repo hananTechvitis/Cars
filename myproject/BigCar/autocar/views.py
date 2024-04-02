@@ -11,3 +11,8 @@ def home(request):
 def car_list(request):
     cars = Car.objects.all()
     return render(request, 'cars.html', {'cars': cars})
+
+
+
+def image_view(request):
+    return render(request, 'image.html')

@@ -17,7 +17,7 @@
   <!-- 
     - custom css link
   -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
 
   <!-- 
     - google font link
@@ -40,7 +40,7 @@
       <div class="overlay" data-overlay></div>
 
       <a href="#" class="logo">
-        <img src="./assets/images/logo.svg" alt="Ridex logo">
+        <img src="{% static 'logo.svg' %}" alt="Ridex logo">
       </a>
 
       <nav class="navbar" data-navbar>
@@ -116,7 +116,9 @@
             </p>
           </div>
 
-          <div class="hero-banner"></div>
+          <div>
+            <img src="{% static 'hero-banner.jpg' %}" class="hero-banner" >
+            </div>
 
           <form action="" class="hero-form">
 
@@ -172,8 +174,8 @@
             <li>
               <div class="featured-car-card">
 
-                <figure class="card-banner">
-                  <img src="./assets/images/car-1.jpg" alt="Toyota RAV4 2021" loading="lazy" width="440" height="300"
+                <figure class="card-banner">  
+                  <img src="{% static 'car-1.jpg' %}" alt="Toyota RAV4 2021" loading="lazy" width="440" height="300"
                     class="w-100">
                 </figure>
 
@@ -238,8 +240,8 @@
               <div class="featured-car-card">
 
                 <figure class="card-banner">
-                  <img src="./assets/images/car-2.jpg" alt="BMW 3 Series 2019" loading="lazy" width="440" height="300"
-                    class="w-100">
+                  <img src="{% static 'car-2.jpg' %}" alt="BMW 3 Series 2019" loading="lazy" width="440" height="300"
+                  class="w-100">
                 </figure>
 
                 <div class="card-content">
@@ -303,8 +305,9 @@
               <div class="featured-car-card">
 
                 <figure class="card-banner">
-                  <img src="./assets/images/car-3.jpg" alt="Volkswagen T-Cross 2020" loading="lazy" width="440"
-                    height="300" class="w-100">
+                  
+                  <img src="{% static 'car-3.jpg' %}" lt="Volkswagen T-Cross 2020" loading="lazy" width="440"
+                  height="300" class="w-100">
                 </figure>
 
                 <div class="card-content">
@@ -367,9 +370,9 @@
             <li>
               <div class="featured-car-card">
 
-                <figure class="card-banner">
-                  <img src="./assets/images/car-4.jpg" alt="Cadillac Escalade 2020" loading="lazy" width="440"
-                    height="300" class="w-100">
+                <figure class="card-banner"> 
+                  <img src="{% static 'car-4.jpg' %}" alt="Cadillac Escalade 2020" loading="lazy" width="440"
+                  height="300" class="w-100">
                 </figure>
 
                 <div class="card-content">
@@ -433,7 +436,7 @@
               <div class="featured-car-card">
 
                 <figure class="card-banner">
-                  <img src="./assets/images/car-5.jpg" alt="BMW 4 Series GTI 2021" loading="lazy" width="440"
+                    <img src="{% static 'car-5.jpg' %}" alt="BMW 4 Series GTI 2021" loading="lazy" width="440"
                     height="300" class="w-100">
                 </figure>
 
@@ -498,8 +501,8 @@
               <div class="featured-car-card">
 
                 <figure class="card-banner">
-                  <img src="./assets/images/car-6.jpg" alt="BMW 4 Series 2019" loading="lazy" width="440" height="300"
-                    class="w-100">
+                  <img src="{% static 'car-6.jpg' %}" alt="BMW 4 Series 2019" loading="lazy" width="440" height="300"
+                  class="w-100"> 
                 </figure>
 
                 <div class="card-content">
@@ -672,7 +675,7 @@
                 <figure class="card-banner">
 
                   <a href="#">
-                    <img src="./assets/images/blog-1.jpg" alt="Opening of new offices of the company" loading="lazy"
+                      <img src="{% static 'blog-1.jpg' %}" alt="Opening of new offices of the company" loading="lazy"
                       class="w-100">
                   </a>
 
@@ -713,7 +716,7 @@
                 <figure class="card-banner">
 
                   <a href="#">
-                    <img src="./assets/images/blog-2.jpg" alt="What cars are most vulnerable" loading="lazy"
+                      <img src="{% static 'blog-2.jpg' %}" alt="What cars are most vulnerable" loading="lazy"
                       class="w-100">
                   </a>
 
@@ -754,7 +757,8 @@
                 <figure class="card-banner">
 
                   <a href="#">
-                    <img src="./assets/images/blog-3.jpg" alt="Statistics showed which average age" loading="lazy"
+
+                    <img src="{% static 'blog-3.jpg' %}" alt="Statistics showed which average age" loading="lazy"
                       class="w-100">
                   </a>
 
@@ -795,8 +799,8 @@
                 <figure class="card-banner">
 
                   <a href="#">
-                    <img src="./assets/images/blog-4.jpg" alt="What´s required when renting a car?" loading="lazy"
-                      class="w-100">
+                    <img src="{% static 'blog-4.jpg' %}" alt="What´s required when renting a car?" loading="lazy"
+                    class="w-100">
                   </a>
 
                   <a href="#" class="btn card-badge">Cars</a>
@@ -836,8 +840,8 @@
                 <figure class="card-banner">
 
                   <a href="#">
-                    <img src="./assets/images/blog-5.jpg" alt="New rules for handling our cars" loading="lazy"
-                      class="w-100">
+
+                    <img src="{% static 'blog-5.jpg' %}" alt="New rules for handling our cars" loading="lazy" class="w-100">
                   </a>
 
                   <a href="#" class="btn card-badge">Company</a>
@@ -894,7 +898,7 @@
 
         <div class="footer-brand">
           <a href="#" class="logo">
-            <img src="./assets/images/logo.svg" alt="Ridex logo">
+            <img src="{% static 'logo.svg' %}" alt="Ridex logo">
           </a>
 
           <p class="footer-text">
@@ -1052,8 +1056,8 @@
   <!-- 
     - custom js link
   -->
-  <script src="./assets/js/script.js"></script>
-
+  <script src=" {% static 'script.js' %}"></script>
+ 
   <!-- 
     - ionicon link
   -->
