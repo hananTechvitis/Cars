@@ -246,13 +246,7 @@
                     <a href="{% url 'rent-car' car.id %}" class="btn">Rent now</a>
 
                     <!-- <button class="btn" onclick="location.href='{% url 'rent-car' car.id %}'">Rent now</button> -->
-                    {% if messages %}
-  {% for message in messages %}
-  <div class="alert {{ message.tags }}">
-      {{ message }}
-  </div>
-  {% endfor %}
-{% endif %}
+
 
                   </form>
                   
@@ -269,7 +263,13 @@
             
         </div>
       </section>
-
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert {{ message.tags }}">
+          {{ message }}
+      </div>
+      {% endfor %}
+    {% endif %}
 
 
 
