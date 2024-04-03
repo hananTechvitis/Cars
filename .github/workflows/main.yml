@@ -1,23 +1,25 @@
-name: SSH and Touch File on AWS Ubuntu Machine
+name: Touch File on Ubuntu
 
 on:
   push:
     branches:
-      - main
+      - main  # Change to your main branch name if different
 
 jobs:
-  ssh-and-touch-file:
+  touch_file:
+    name: Touch File
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check Out Repository
+      - name: Checkout code
         uses: actions/checkout@v2
-      - name: Setup SSH Key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H your_aws_machine_ip >> ~/.ssh/known_hosts
-          ssh -o StrictHostKeyChecking=no ubuntu@3.70.54.173 'touch ~/testing.txt'
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Touch file on Ubuntu
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            touch /home/ubuntu/file.txt
