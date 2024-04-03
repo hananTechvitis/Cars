@@ -27,7 +27,7 @@ def payment(request, car_id):
     context = {
         'car_id': car_id,
     }
-    return render(request, 'myapp/payment.html', context)
+    return render(request, 'payment.html', context)
 
 
 
