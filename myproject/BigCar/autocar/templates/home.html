@@ -28,56 +28,7 @@
     rel="stylesheet">
   
 </head>
-<script>
-  // Get the modal
-  var modal = document.getElementById('rentModal');
-  
-  // Function to open modal
-  function showRentModal(event) {
-    event.preventDefault(); // Prevent the default anchor behavior
-    modal.style.display = "block";
-  }
-  
-  // Function to close the modal
-  function closeModal() {
-    modal.style.display = "none";
-  }
-  
-  // Get the <a> element that closes the modal
-  var cancelBtn = document.getElementsByClassName("modal-close")[0];
-  
-  // When the user clicks on <span> (x), close the modal
-  cancelBtn.onclick = function() {
-    closeModal();
-  }
-  
-  // Function to handle rent confirmation
-  function confirmRent() {
-    // Implement what should happen when a rent is confirmed.
-    // For example, redirect to a confirmation page or call an API.
-    closeModal();
-    console.log("Rent confirmed"); // Placeholder action
-  }
-  
-  // Attach the showRentModal function to the Rent now buttons
-  document.querySelectorAll('.featured-car-card .btn').forEach(btn => {
-    btn.addEventListener('click', showRentModal);
-  });
-  </script>
-  
 <body>
-
-  <!-- Modal Structure -->
-<div id="rentModal" class="modal">
-  <div class="modal-content">
-    <h4>Rent Confirmation</h4>
-    <p>Are you sure you want to rent this car?</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close btn">Cancel</a>
-    <a href="#" class="modal-action btn" onclick="confirmRent()">Confirm</a>
-  </div>
-</div>
 
   <!-- 
     - #HEADER
@@ -284,7 +235,9 @@
                       <ion-icon name="heart-outline"></ion-icon>
                     </button>
 
-                    <button class="btn" onclick="location.href='{% url 'rent-car' car.id %}'">Rent now</button>
+                     
+                    <!-- Updated Rent now button with an onclick event to call redirectToPaymentPage function -->
+                    <button class="btn" onclick="redirectToPaymentPage('{{ car.id }}')">Rent now</button>
 
                   </div>
 
@@ -520,7 +473,18 @@
     - custom js link
   -->
   <script src=" {% static 'script.js' %}"></script>
- 
+  <script>
+    // Function to redirect to the payment page
+    function redirectToPaymentPage(carId) {
+      // Example of redirecting to a payment page, appending the car ID as a query parameter
+      window.location.href = `/payment?carId=${carId}`;
+    
+      // If your URL structure is different, modify the above line accordingly.
+      // For example, if using the car ID as part of the path, you might have something like:
+      // window.location.href = `/payment/${carId}`;
+    }
+    </script>
+    
   <!-- 
     - ionicon link
   -->
