@@ -1,0 +1,21 @@
+name: SSH and Touch File on AWS Ubuntu Machine
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ssh-and-touch-file:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup SSH Key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H your_aws_machine_ip >> ~/.ssh/known_hosts
+        ssh -o StrictHostKeyChecking=no ubuntu@3.70.54.173 'touch ~/testing.txt'
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
