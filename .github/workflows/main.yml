@@ -1,4 +1,4 @@
-name: Touch File on Ubuntu
+name: Docker Ubuntu
 
 on:
   push:
@@ -23,5 +23,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /home/ubuntu/Cars/myproject/BigCar/
-            docker build -t myproject_bigcar .
-            docker run -d -p 8000:8000 --name hanan myproject_bigcar
+            sudo docker build -t myproject_bigcar .
+            sudo docker run -d -p 8000:8000 --name hanan myproject_bigcar
