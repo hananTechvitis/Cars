@@ -472,16 +472,10 @@
   <!-- 
     - custom js link
   -->
-  <script src=" {% static 'script.js' %}"></script>
+
   <script>
-    // Function to redirect to the payment page
     function redirectToPaymentPage(carId) {
-      // Example of redirecting to a payment page, appending the car ID as a query parameter
-      window.location.href = `/payment?carId=${carId}`;
-    
-      // If your URL structure is different, modify the above line accordingly.
-      // For example, if using the car ID as part of the path, you might have something like:
-      // window.location.href = `/payment/${carId}`;
+      window.location.href = `/payment/${carId}/`;
     }
     </script>
     

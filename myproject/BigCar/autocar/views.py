@@ -23,7 +23,11 @@ def rent_car(request, car_id):
     return redirect('home')
 
 
-
+def payment(request, car_id):    
+    context = {
+        'car_id': car_id,
+    }
+    return render(request, 'myapp/payment.html', context)
 
 
 
