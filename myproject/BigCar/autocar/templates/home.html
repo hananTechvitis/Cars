@@ -28,8 +28,56 @@
     rel="stylesheet">
   
 </head>
-
+<script>
+  // Get the modal
+  var modal = document.getElementById('rentModal');
+  
+  // Function to open modal
+  function showRentModal(event) {
+    event.preventDefault(); // Prevent the default anchor behavior
+    modal.style.display = "block";
+  }
+  
+  // Function to close the modal
+  function closeModal() {
+    modal.style.display = "none";
+  }
+  
+  // Get the <a> element that closes the modal
+  var cancelBtn = document.getElementsByClassName("modal-close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  cancelBtn.onclick = function() {
+    closeModal();
+  }
+  
+  // Function to handle rent confirmation
+  function confirmRent() {
+    // Implement what should happen when a rent is confirmed.
+    // For example, redirect to a confirmation page or call an API.
+    closeModal();
+    console.log("Rent confirmed"); // Placeholder action
+  }
+  
+  // Attach the showRentModal function to the Rent now buttons
+  document.querySelectorAll('.featured-car-card .btn').forEach(btn => {
+    btn.addEventListener('click', showRentModal);
+  });
+  </script>
+  
 <body>
+
+  <!-- Modal Structure -->
+<div id="rentModal" class="modal">
+  <div class="modal-content">
+    <h4>Rent Confirmation</h4>
+    <p>Are you sure you want to rent this car?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn">Cancel</a>
+    <a href="#" class="modal-action btn" onclick="confirmRent()">Confirm</a>
+  </div>
+</div>
 
   <!-- 
     - #HEADER
