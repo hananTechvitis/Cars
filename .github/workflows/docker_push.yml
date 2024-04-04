@@ -21,6 +21,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: hanantechvitis/ridex:latest  # Replace with your Docker Hub username and repository name
+        tags: hanantechvitis/ridex:latest  
         context: ./myproject/BigCar  # Set the build context to the directory containing your Dockerfile
         file: ./myproject/BigCar/Dockerfile  # Specify the path to the Dockerfile
