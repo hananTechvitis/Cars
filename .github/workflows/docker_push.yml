@@ -2,7 +2,7 @@ name: Build and Push Docker image
 
 on:
   push:
-    branches: [ main ]  
+    branches: [ main ]  # Set to your default branch
 
 jobs:
   build_and_push:
@@ -21,6 +21,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: hanantechvitis/ridex:latest
-        context: ./Cars/myproject/BigCar  # Path to the directory containing Dockerfile
-        file: ./Cars/myproject/BigCar/Dockerfile  # Path to the Dockerfile
+        tags: hanantechvitis/ridex:latest  # Replace with your Docker Hub username and repository name
+        context: ./myproject/BigCar  # Set the build context to the directory containing your Dockerfile
+        file: ./myproject/BigCar/Dockerfile  # Specify the path to the Dockerfile
