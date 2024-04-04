@@ -1,0 +1,27 @@
+name: Docker Ubuntu
+
+on:
+  push:
+    branches:
+      - main  # Change to your main branch name if different
+
+jobs:
+  touch_file:
+    name: Touch File
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Dockerfile
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd /home/ubuntu/Cars/myproject/BigCar/
+            sudo docker build -t myproject_bigcar .
+            sudo docker run -d -p 8000:8000 --name hanan myproject_bigcar
