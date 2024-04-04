@@ -7,12 +7,17 @@ on:
 
 jobs:
   touch_file:
-    name: Test Touch File
+    name: Touch File
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
 
       - name: Touch file on Ubuntu
         uses: appleboy/ssh-action@master
@@ -22,4 +27,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            touch file.txt
+            touch hanan_testing.txt
