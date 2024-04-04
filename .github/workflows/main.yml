@@ -7,7 +7,7 @@ on:
 
 jobs:
   touch_file:
-    name: Touch File
+    name: Docker File
     runs-on: ubuntu-latest
 
     steps:
@@ -24,4 +24,4 @@ jobs:
           script: |
             cd /home/ubuntu/Cars/myproject/BigCar/
             sudo docker build -t myproject_bigcar .
-            sudo docker run -d -p 8000:8000 --name hanan myproject_bigcar
+            sudo docker run -d -p 8000:8000 --name hanan02 myproject_bigcar
