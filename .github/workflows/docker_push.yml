@@ -24,3 +24,17 @@ jobs:
         tags: hanantechvitis/ridex:latest  
         context: ./myproject/BigCar  # Set the build context to the directory containing your Dockerfile
         file: ./myproject/BigCar/Dockerfile  # Specify the path to the Dockerfile
+
+    - name: Pull and run Docker image on EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker pull hanantechvitis/ridex:latest  # Replace with your Docker Hub username/repo:tag
+          docker stop hanan02 || true
+          docker rm hanan02 || true
+          docker run -d -p 8000:8000 --name hanan02 hanantechvitis/ridex:latest
