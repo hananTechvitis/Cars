@@ -21,4 +21,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: hanantechvitis/ridex:latest  
+        tags: hanantechvitis/ridex:latest
+        context: ./Cars/myproject/BigCar  # Path to the directory containing Dockerfile
+        file: ./Cars/myproject/BigCar/Dockerfile  # Path to the Dockerfile
