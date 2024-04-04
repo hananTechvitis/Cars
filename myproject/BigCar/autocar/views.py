@@ -15,14 +15,6 @@ def home(request):
     return render(request, 'home.html', {'featured_cars': featured_cars})
    
 
-
-def rent_car(request, car_id):
-    messages.success(request, "Car rented successfully!")
-
-    # Redirect back to the same page or to a different page
-    return redirect('home')
-
-
 def payment(request, car_id):    
     context = {
         'car_id': car_id,
@@ -30,18 +22,9 @@ def payment(request, car_id):
     return render(request, 'payment.html', context)
 
 
-
-
-
-
-
-
-
-
 def car_list(request):
     cars = Car.objects.all()
     return render(request, 'cars.html', {'cars': cars})
-
 
 
 def image_view(request):
