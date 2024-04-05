@@ -22,7 +22,7 @@ jobs:
       with:
         push: true
         tags: hanantechvitis/ridex:latest  
-        context: ./myproject/BigCar  # Set the build context to the directory containing your Dockerfile
+        context: ./myproject/BigCar  # Set the build context to the directory containing your Dockerfile b
         file: ./myproject/BigCar/Dockerfile  # Specify the path to the Dockerfile
 
     - name: Pull and run Docker image on EC2
