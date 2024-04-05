@@ -1,0 +1,40 @@
+name: Build and Push Docker image
+
+on:
+  push:
+    branches: [ main ]  # Set to your default branch
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: hanantechvitis/ridex:latest  
+        context: ./myproject/BigCar  # Set the build context to the directory containing your Dockerfile
+        file: ./myproject/BigCar/Dockerfile  # Specify the path to the Dockerfile
+
+    - name: Pull and run Docker image on EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          sudo docker pull hanantechvitis/ridex:latest  # Replace with your Docker Hub username/repo:tag
+          sudo docker stop hanan02 || true
+          sudo docker rm hanan02 || true
+          sudo docker run -d -p 8000:8000 --name hanan02 hanantechvitis/ridex:latest
