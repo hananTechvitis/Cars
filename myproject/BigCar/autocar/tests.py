@@ -5,12 +5,12 @@ class CarModelTestCase(TestCase):
     def setUp(self):
         # Set up any necessary data or state before running each test method
         self.brand = Brand.objects.create(name='Toyota')
-        image_path = 'media/car_images/R.jpg'
+        image_path = 'media/car_images/R.png'
         # Open the image file
         with open(image_path, 'rb') as f:
             # Create a Django File object from the image file
             django_file = File(f)
-            
+
         self.car = Car.objects.create(
             brand=self.brand,
             model='Camry',
