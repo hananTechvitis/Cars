@@ -34,4 +34,5 @@ class CarModelTestCase(TestCase):
         self.assertEqual(self.car.fuel_efficiency, '12')
 
     def test_car_creation_and_list_view(self):
-            self.assertEqual(self.car_instance.model, 'Test Model')
+        # Test if the Car instance exists and its model attribute is correct
+        self.assertEqual(self.car.model, 'Camry')
