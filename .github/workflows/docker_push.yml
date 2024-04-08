@@ -17,15 +17,13 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v2
-      with:
-        push: true
-        tags: hanantechvitis/ridex:latest  
-        context: ./myproject/BigCar  # Set the build context to the directory containing your Dockerfile
-        file: ./myproject/BigCar/Dockerfile  # Specify the path to the Dockerfile
+    - name: Build Docker image
+      run: docker build -t hanantechvitis/ridex:latest ./myproject/BigCar
 
-    - name: Pull and run Docker image on EC2
+    - name: Push Docker image
+      run: docker push hanantechvitis/ridex:latest
+      
+    - name: SSH into EC2 instance and deploy Docker container
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -34,7 +32,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          sudo docker pull hanantechvitis/ridex:latest  # Replace with your Docker Hub username/repo:tag
+          sudo docker pull hanantechvitis/ridex:latest
           sudo docker start some-postgres || true
           sudo docker stop hanan02 || true
           sudo docker rm hanan02 || true
