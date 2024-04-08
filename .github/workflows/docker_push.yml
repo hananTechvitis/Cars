@@ -37,3 +37,16 @@ jobs:
           sudo docker stop hanan02 || true
           sudo docker rm hanan02 || true
           
+    - name: SSH into EC2 instance_01 and deploy Docker container
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST_1 }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          sudo docker pull hanantechvitis/ridex:latest
+          sudo docker start some-postgres || true
+          sudo docker stop hanan02 || true
+          sudo docker rm hanan02 || true
