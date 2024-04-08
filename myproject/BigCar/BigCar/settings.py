@@ -129,7 +129,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Define additional directories from which to collect static files
 STATICFILES_DIRS = [
-    BASE_DIR / 'autocar' / 'static',
+    BASE_DIR  / 'static',
 ]
 
 
