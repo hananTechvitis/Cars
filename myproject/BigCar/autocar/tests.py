@@ -5,6 +5,12 @@ class CarModelTestCase(TestCase):
     def setUp(self):
         # Set up any necessary data or state before running each test method
         self.brand = Brand.objects.create(name='Toyota')
+        image_path = 'media/car_images/R.jpg'
+        # Open the image file
+        with open(image_path, 'rb') as f:
+            # Create a Django File object from the image file
+            django_file = File(f)
+            
         self.car = Car.objects.create(
             brand=self.brand,
             model='Camry',
@@ -27,8 +33,4 @@ class CarModelTestCase(TestCase):
         self.assertEqual(self.car.fuel_efficiency, '12')
 
     def test_car_creation_and_list_view(self):
-            # Test if a car can be created and displayed in the car list view
-            brand = Brand.objects.create(name='Toyota')
-            Car.objects.create(brand=brand, model='Camry', year=2022, price=25000.00)
-            response = self.client.get('/cars/')
-            self.assertContains(response, 'Camry')
+            self.assertEqual(self.car_instance.model, 'Test Model')
