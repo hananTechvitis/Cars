@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Brand, Car
+from django.core.files import File
 
 class CarModelTestCase(TestCase):
     def setUp(self):
