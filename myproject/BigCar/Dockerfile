@@ -16,10 +16,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # Make port 8000 available to the world outside this container
-EXPOSE 8000
+EXPOSE 8081
 
 # Collect static files directly into /static/
 RUN python manage.py collectstatic --no-input --clear --directory /static/
 
 # Command to run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "BigCar.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8081", "BigCar.wsgi:application"]
