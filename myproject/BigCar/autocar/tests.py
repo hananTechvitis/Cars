@@ -25,3 +25,10 @@ class CarModelTestCase(TestCase):
         self.assertEqual(self.car.type, 'Gasoline')
         self.assertTrue(self.car.is_automatic)
         self.assertEqual(self.car.fuel_efficiency, '12')
+
+    def test_car_creation_and_list_view(self):
+            # Test if a car can be created and displayed in the car list view
+            brand = Brand.objects.create(name='Toyota')
+            Car.objects.create(brand=brand, model='Camry', year=2022, price=25000.00)
+            response = self.client.get('/cars/')
+            self.assertContains(response, 'Camry')
