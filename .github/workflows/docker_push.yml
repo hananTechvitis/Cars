@@ -36,4 +36,4 @@ jobs:
           sudo docker start some-postgres || true
           sudo docker stop hanan02 || true
           sudo docker rm hanan02 || true
-          sudo docker run -d -p 8000:8000 --name hanan02 hanantechvitis/ridex:latest
+          
