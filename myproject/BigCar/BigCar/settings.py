@@ -121,11 +121,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-# Define STATIC_URL to specify the URL for serving static files
+# Define the URL for serving static files
 STATIC_URL = '/static/'
 
-# Define STATIC_ROOT to specify where collected static files will be stored during deployment
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# Define the directory where collected static files will be stored during deployment
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Default primary key field type
