@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # Make port 8000 available to the world outside this container
-EXPOSE 8081
+EXPOSE 8000
 
 # Command to run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:8081", "BigCar.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "BigCar.wsgi:application"]
