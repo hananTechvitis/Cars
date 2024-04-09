@@ -23,7 +23,7 @@ jobs:
     - name: Push Docker image
       run: docker push hanantechvitis/ridex:latest
       
-    - name: SSH into EC2 instance and deploy Docker container
+    - name: SSH into EC2 instance 1 and deploy Docker container
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -37,7 +37,7 @@ jobs:
           sudo docker stop hanan02 || true
           sudo docker rm hanan02 || true
           
-    - name: SSH into EC2 instance_01 and deploy Docker container
+    - name: SSH into EC2 instance 2 and deploy Docker container
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST_1 }}
