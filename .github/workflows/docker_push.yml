@@ -50,3 +50,10 @@ jobs:
           sudo docker start some-postgres || true
           sudo docker stop hanan02 || true
           sudo docker rm hanan02 || true
+    - name: Trigger Jenkins Job
+      env:
+        JENKINS_URL: http://3.71.78.89:8080/job/Django%20App%20Test/build
+        JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}  
+        JENKINS_USER: ${{ secrets.JENKINS_USER }}  
+      run: |
+        curl -X POST "$JENKINS_URL" --user "$JENKINS_USER:$JENKINS_TOKEN"
