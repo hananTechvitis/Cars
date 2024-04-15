@@ -31,11 +31,25 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: |
+          # Login to Docker registry
           sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          # Pull the latest image
           sudo docker pull hanantechvitis/ridex:latest
-          sudo docker start some-postgres || true
+          
+          # Stop and remove the existing PostgreSQL container if it exists
+          sudo docker stop some-postgres || true
+          sudo docker rm some-postgres || true
+
+          
+          sudo docker run --name some-postgres -e POSTGRES_PASSWORD=12345678 -p 5432:5432 -d postgres
+          sudo docker exec some-postgres python3 manage.py makemigrations
+          sudo docker exec some-postgres python3 manage.py migrate
+          
+          # Stop and remove the existing Django application container if it exists
           sudo docker stop hanan02 || true
           sudo docker rm hanan02 || true
+
+          
           
     - name: SSH into EC2 instance 2 and deploy Docker container
       uses: appleboy/ssh-action@master
