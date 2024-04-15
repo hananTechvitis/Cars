@@ -5,7 +5,7 @@ import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "BigCar.settings")
 django.setup()
 
-from myapp.models import Car, Brand
+from autocar.models import Car, Brand
 
 def import_cars_from_csv(csv_filename):
     with open(csv_filename, newline='', encoding='utf-8') as csvfile:
