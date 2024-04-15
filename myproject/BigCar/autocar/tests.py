@@ -25,7 +25,7 @@ class CarModelTestCase(TestCase):
 
     def test_car_model_creation(self):
         # Test if the Car object was created successfully
-        self.assertEqual(self.car.model, 'Camry')
+        self.assertEqual(self.car.model, 'Caumry')
         self.assertEqual(self.car.year, 2022)
         self.assertEqual(self.car.price, 25000.00)
         self.assertEqual(self.car.passengers, 5)
