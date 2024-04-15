@@ -42,8 +42,8 @@ jobs:
 
           
           sudo docker run --name some-postgres -e POSTGRES_PASSWORD=12345678 -p 5432:5432 -d postgres
-          sudo docker exec some-postgres python3 manage.py makemigrations
-          sudo docker exec some-postgres python3 manage.py migrate
+          sudo docker exec hanan02 python3 manage.py makemigrations
+          sudo docker exec hanan02 python3 manage.py migrate
           
           # Stop and remove the existing Django application container if it exists
           sudo docker stop hanan02 || true
