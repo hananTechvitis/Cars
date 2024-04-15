@@ -120,32 +120,6 @@
           <div>
             <img src="{% static 'hero-banner.jpg' %}" class="hero-banner" >
             </div>
-
-          <!-- <form action="" class="hero-form">
-
-            <div class="input-wrapper">
-              <label for="input-1" class="input-label">Car, model, or brand</label>
-
-              <input type="text" name="car-model" id="input-1" class="input-field"
-                placeholder="What car are you looking?">
-            </div>
-
-            <div class="input-wrapper">
-              <label for="input-2" class="input-label">Max. monthly payment</label>
-
-              <input type="text" name="monthly-pay" id="input-2" class="input-field" placeholder="Add an amount in $">
-            </div>
-
-            <div class="input-wrapper">
-              <label for="input-3" class="input-label">Make Year</label>
-
-              <input type="text" name="year" id="input-3" class="input-field" placeholder="Add a minimal make year">
-            </div>
-
-            <button type="submit" class="btn">Search</button>
-
-          </form> -->
-
         </div>
       </section>
 
@@ -175,14 +149,10 @@
             <li>
               <div class="featured-car-card">
 
-                <figure class="card-banner">  
-                  <!-- <img src="{% static 'car-1.jpg' %}" alt="{{ car.brand }} {{ car.model }} {{ car.year }}" loading="lazy" width="440" height="300"
-                    class="w-100"> -->
+                <figure class="card-banner">               
                     {% if car.image %}
-                    <!-- Display the car image if it exists -->
                     <img src="{{ car.image.url }}" alt="{{ car.brand }} {{ car.model }} {{ car.year }}" loading="lazy" width="440" height="300" class="w-100">
-                    {% else %}
-                    <!-- Display a placeholder or leave it blank if no image exists -->
+                    {% else %}                   
                     <img src="{% static 'car-2.jpg' %}" alt="No image available" loading="lazy" width="440" height="300" class="w-100">
                     {% endif %}
 
