@@ -35,8 +35,7 @@ jobs:
           sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           # Pull the latest image
           sudo docker pull hanantechvitis/ridex:latest
-          pip3 install requests
-          python3 import_cars.py
+          
           
           # Stop and remove the existing PostgreSQL container if it exists
           sudo docker stop some-postgres || true
@@ -46,6 +45,8 @@ jobs:
           sudo docker run --name some-postgres -e POSTGRES_PASSWORD=12345678 -p 5432:5432 -d postgres
           sudo docker exec hanan02 python3 manage.py makemigrations
           sudo docker exec hanan02 python3 manage.py migrate
+          sudo docker exec hanan02 pip3 install requests
+          sudo docker exec hanan02 python3 import_cars.py
           
           # Stop and remove the existing Django application container if it exists
           sudo docker stop hanan02 || true
