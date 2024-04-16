@@ -36,6 +36,7 @@ jobs:
           # Pull the latest image
           sudo docker pull hanantechvitis/ridex:latest
           pip3 install requests
+          python3 import_cars.py
           
           # Stop and remove the existing PostgreSQL container if it exists
           sudo docker stop some-postgres || true
