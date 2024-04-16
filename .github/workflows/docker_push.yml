@@ -35,6 +35,7 @@ jobs:
           sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           # Pull the latest image
           sudo docker pull hanantechvitis/ridex:latest
+          pip3 install requests
           
           # Stop and remove the existing PostgreSQL container if it exists
           sudo docker stop some-postgres || true
