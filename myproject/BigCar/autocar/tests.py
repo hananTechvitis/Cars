@@ -1,38 +1,30 @@
 from django.test import TestCase
 from .models import Brand, Car
-from django.core.files import File
 
-class CarModelTestCase(TestCase):
+class CarModelTest(TestCase):
     def setUp(self):
-        # Set up any necessary data or state before running each test method
-        self.brand = Brand.objects.create(name='Toyota')
-        image_path = 'media/car_images/R.png'
-        # Open the image file
-        with open(image_path, 'rb') as f:
-            # Create a Django File object from the image file
-            django_file = File(f)
-
+        # Setting up test data
+        self.brand = Brand.objects.create(name="Test Brand")
         self.car = Car.objects.create(
             brand=self.brand,
-            model='Camry',
-            year=2022,
-            price=25000.00,
-            passengers=5,
+            model="Model X",
+            year=2020,
+            price=50000.00,
             type='Gasoline',
             is_automatic=True,
-            fuel_efficiency='12'
+            fuel_efficiency='15 km/litre'
         )
 
-    def test_car_model_creation(self):
-        # Test if the Car object was created successfully
-        self.assertEqual(self.car.model, 'Caumry')
-        self.assertEqual(self.car.year, 2022)
-        self.assertEqual(self.car.price, 25000.00)
-        self.assertEqual(self.car.passengers, 5)
-        self.assertEqual(self.car.type, 'Gasoline')
-        self.assertTrue(self.car.is_automatic)
-        self.assertEqual(self.car.fuel_efficiency, '12')
+    def test_string_representation(self):
+        self.assertEqual(str(self.car), "Test Brand Model X (2020)")
 
-    def test_car_creation_and_list_view(self):
-        # Test if the Car instance exists and its model attribute is correct
-        self.assertEqual(self.car.model, 'Camry')
+    def test_brand_cascade_delete(self):
+        # Test cascading delete
+        self.brand.delete()
+        self.assertEqual(Car.objects.count(), 0)
+
+    def test_field_defaults(self):
+        # Test defaults
+        new_car = Car.objects.create(brand=self.brand, model="Model Y", year=2021, price=60000.00)
+        self.assertEqual(new_car.passengers, 4)
+        self.assertTrue(new_car.is_automatic)
