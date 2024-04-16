@@ -151,7 +151,7 @@
 
                 <figure class="card-banner">               
                     {% if car.image %}
-                    <img src="{{ car.image_url }}" alt="{{ car.brand }} {{ car.model }} {{ car.year }}" loading="lazy" width="440" height="300" class="w-100" >
+                    <img src="{{ car.image.url }}" alt="{{ car.brand }} {{ car.model }} {{ car.year }}" loading="lazy" width="440" height="300" class="w-100">
                     {% else %}                   
                     <img src="{% static 'car-2.jpg' %}" alt="No image available" loading="lazy" width="440" height="300" class="w-100">
                     {% endif %}
