@@ -36,12 +36,10 @@ jobs:
           # Pull the latest image
           sudo docker pull hanantechvitis/ridex:latest
           
-          
           # Stop and remove the existing PostgreSQL container if it exists
           sudo docker stop some-postgres || true
           sudo docker rm some-postgres || true
 
-          
           sudo docker run --name some-postgres -e POSTGRES_PASSWORD=12345678 -p 5432:5432 -d postgres
           sudo docker exec hanan02 python3 manage.py makemigrations
           sudo docker exec hanan02 python3 manage.py migrate
