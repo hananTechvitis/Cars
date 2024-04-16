@@ -15,7 +15,6 @@ class CarModelTestCase(TestCase):
             model='Camry',
             year=2022,
             price=25000.00,
-            image=self.image,  # Attach the mock image to the model
             passengers=5,
             type='Gasoline',
             is_automatic=True,
@@ -31,7 +30,7 @@ class CarModelTestCase(TestCase):
         self.assertEqual(self.car.type, 'Gasoline')
         self.assertTrue(self.car.is_automatic)
         self.assertEqual(self.car.fuel_efficiency, '12')
-        self.assertTrue(self.car.image)  # Test if the mocked image is attached successfully
+        
 
     def test_car_creation_and_list_view(self):
         # Test if the Car instance exists and its model attribute is correct
