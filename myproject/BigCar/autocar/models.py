@@ -11,7 +11,7 @@ class Car(models.Model):
     model = models.CharField(max_length=100)
     year = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='car_images')
+    image = models.ImageField(upload_to='car_images/', blank=True, null=True)  # Added ImageField here
 
     # New fields
     passengers = models.IntegerField(verbose_name='Number of Passengers', default=4)
