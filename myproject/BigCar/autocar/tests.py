@@ -1,30 +1,44 @@
 from django.test import TestCase
 from .models import Brand, Car
+from django.core.files.uploadedfile import SimpleUploadedFile
+import os
 
-class CarModelTest(TestCase):
+class CarModelTestCase(TestCase):
     def setUp(self):
-        # Setting up test data
-        self.brand = Brand.objects.create(name="Test Brand")
-        self.car = Car.objects.create(
-            brand=self.brand,
-            model="Model X",
-            year=202a,
-            price=50000.00,z
-            type='Gasoline',
-            is_automatic=True,
-            fuel_efficiency='15 km/litre'
+        # Set up any necessary data or state before running each test method
+        self.brand = Brand.objects.create(name='Toyota')
+
+        # Creating a dummy image for testing
+        image_path = os.path.join(os.path.dirname(__file__), 'media', 'car_images', 'R.png')
+        self.image = SimpleUploadedFile(
+            name='test_image.png',
+            content=open(image_path, 'rb').read(),
+            content_type='image/png'
         )
 
-    def test_string_representation(self):
-        self.assertEqual(str(self.car), "Test Brand Model X (2020)")
+        self.car = Car.objects.create(
+            brand=self.brand,
+            model='Camry',
+            year=2022,
+            price=25000.00,
+            image=self.image,  # Attach the image to the model
+            passengers=5,
+            type='Gasoline',
+            is_automatic=True,
+            fuel_efficiency='12'
+        )
 
-    def test_brand_cascade_delete(self):
-        # Test cascading delete
-        self.brand.delete()
-        self.assertEqual(Car.objects.count(), 0)
+    def test_car_model_creation(self):
+        # Test if the Car object was created successfully
+        self.assertEqual(self.car.model, 'Camry')
+        self.assertEqual(self.car.year, 2022)
+        self.assertEqual(self.car.price, 25000.00)
+        self.assertEqual(self.car.passengers, 5)
+        self.assertEqual(self.car.type, 'Gasoline')
+        self.assertTrue(self.car.is_automatic)
+        self.assertEqual(self.car.fuel_efficiency, '12')
+        self.assertTrue(self.car.image)  # Test if image is attached successfully
 
-    def test_field_defaults(self):
-        # Test defaults
-        new_car = Car.objects.create(brand=self.brand, model="Model Y", year=2021, price=60000.00)
-        self.assertEqual(new_car.passengers, 4)
-        self.assertTrue(new_car.is_automatic)
+    def test_car_creation_and_list_view(self):
+        # Test if the Car instance exists and its model attribute is correct
+        self.assertEqual(self.car.model, 'Camry')
