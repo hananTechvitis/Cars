@@ -8,8 +8,8 @@ class CarModelTest(TestCase):
         self.car = Car.objects.create(
             brand=self.brand,
             model="Model X",
-            year=2020,
-            price=50000.00,
+            year=202a,
+            price=50000.00,z
             type='Gasoline',
             is_automatic=True,
             fuel_efficiency='15 km/litre'
