@@ -1,6 +1,6 @@
 Brand,Model,Year,Price,Passengers,Type,Is Automatic,Fuel Efficiency,Image
-Toyota,corolla,2021,250,5,Gasoline,True,15,
+Toyota,corolla,2021,25000.00,5,Gasoline,True,15,
 BMW,Series3,2024,250,4,Hybrid,True,12,
 BMW,Series4,2025,300,4,Hybrid,True,18,
-Toyota,RAV4,2022,250,5,Gasoline,True,15,
-Mercedes,Benz-E-Class,2023,400,5,Hybrid,True,15,
+Toyota,RV4,2022,250,5,Gasoline,True,15,
+
