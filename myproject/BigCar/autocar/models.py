@@ -23,5 +23,19 @@ class Car(models.Model):
     is_automatic = models.BooleanField(default=True, verbose_name='Is Automatic')
     fuel_efficiency = models.CharField(max_length=15, verbose_name='Fuel Efficiency (km/litre)', default='N/A')
     
+    def image_url(self):
+        """
+        Returns the URL of the image, checking both .jpeg and .jpg extensions.
+        """
+        base_path = os.path.join('car_images', f'{self.model}')
+        jpeg_path = f'{base_path}.jpeg'
+        jpg_path = f'{base_path}.jpg'
+
+        if os.path.exists(os.path.join(settings.MEDIA_ROOT, jpeg_path)):
+            return os.path.join(settings.MEDIA_URL, jpeg_path)
+        elif os.path.exists(os.path.join(settings.MEDIA_ROOT, jpg_path)):
+            return os.path.join(settings.MEDIA_URL, jpg_path)
+        return None  # or a default image path
+
     def __str__(self):
         return f"{self.brand} {self.model} ({self.year})"
