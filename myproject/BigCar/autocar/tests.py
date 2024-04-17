@@ -8,8 +8,6 @@ class CarModelTestCase(TestCase):
         # Set up any necessary data or state before running each test method
         self.brand = Brand.objects.create(name='Toyota')
 
-        
-
         self.car = Car.objects.create(
             brand=self.brand,
             model='Camry',

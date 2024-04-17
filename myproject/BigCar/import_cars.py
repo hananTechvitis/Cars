@@ -1,7 +1,7 @@
 import csv
 import os
 import django
-import requests  # Import requests to handle URL downloading
+import requests  # type: ignore # Import requests to handle URL downloading
 from django.core.files.base import ContentFile
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "BigCar.settings")
