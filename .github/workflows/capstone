@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # New step for installing prerequisites on the runner
+    # New step for installing prerequisites on the  222
     - name: Install dependencies
       run: |
         sudo apt-get update
