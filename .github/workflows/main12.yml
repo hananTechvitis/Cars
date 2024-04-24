@@ -51,6 +51,4 @@ jobs:
           sudo docker exec hanan02 pip3 install requests
           sudo docker exec hanan02 python3 import_cars.py
           
-          # Stop and remove the existing Django application container if it exists
-          sudo docker stop hanan02 || true
-          sudo docker rm hanan02 || true
+          sudo docker run -d -p 8000:8000 --name hanan02 hanantechvitis/ridex:latest
