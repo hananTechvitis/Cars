@@ -38,9 +38,10 @@ jobs:
           sudo docker rm some-postgres || true
 
           sudo docker run --name some-postgres -e POSTGRES_PASSWORD=12345678 -p 5432:5432 -d postgres
+          sudo docker run -d -p 8000:8000 --name hanan02 hanantechvitis/ridex:latest
           sudo docker exec hanan02 python3 manage.py makemigrations
           sudo docker exec hanan02 python3 manage.py migrate
           sudo docker exec hanan02 pip3 install requests
           sudo docker exec hanan02 python3 import_cars.py
           
-          sudo docker run -d -p 8000:8000 --name hanan02 hanantechvitis/ridex:latest
+          
