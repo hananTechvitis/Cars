@@ -42,10 +42,12 @@ jobs:
           sudo docker rm hanan02 || true
           sudo docker run --name some-postgres -e POSTGRES_PASSWORD=12345678 -p 5432:5432 -d postgres
           
+          sleep 10 # Wait for PostgreSQL to be fully ready
+          sudo docker run -d -p 8000:8000 --name hanan02 hanantechvitis/ridex:latest
           sleep 5 # Ensure the application container is ready
           sudo docker exec hanan02 python3 manage.py makemigrations
           sudo docker exec hanan02 python3 manage.py migrate
           sudo docker exec hanan02 pip3 install requests
           sudo docker exec hanan02 python3 import_cars.py
-          sleep 10 # Wait for PostgreSQL to be fully ready
-          sudo docker run -d -p 8000:8000 --name hanan02 hanantechvitis/ridex:latest
+          
+          
